@@ -33,7 +33,7 @@ This module adds new fields to the Sales > Checkout section of your stores confi
 ### How to Configure
 To access this module's configuration, navigate to `Stores > Settings > Configuration > Sales > Checkout` then expand the `Shopping Cart` group.
 
-![Free Shipping Progress Bar Settings](https://i.postimg.cc/jdcX2Fsn/Screen-Shot-2021-02-02-at-11-12-26-AM.png)
+![Free Shipping Progress Bar Settings](https://i.postimg.cc/9Xd38Cp3/Screen-Shot-2021-02-02-at-11-44-50-AM.png)
 
 ### Settings Explanation
 
