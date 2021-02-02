@@ -1,0 +1,22 @@
+{
+    "name": "chrismallory/module-freeshipping-progress-bar",
+    "description": "Display a progress bar on the shopping cart based on order total to encourage users to spend more to get free shipping",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "chris@christophermallory.com",
+            "name": "Chris Mallory"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ChrisMallory\\FreeShippingProgressBar\\": ""
+        }
+    }
+}

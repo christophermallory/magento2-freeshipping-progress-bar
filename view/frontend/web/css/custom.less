@@ -1,0 +1,126 @@
+.freeship-progress {
+    padding: 15px;
+
+    background-color: transparent;
+    border-top: 1px solid #ccc;
+    @media screen and (min-width: 768px) {
+        padding: 16px 0;
+    }
+
+    .freeship-text {
+        color: #000;
+        margin-bottom: 0;
+        max-width: 100%;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    p {
+        &.upsell {
+            text-align: center;
+            @media screen and (min-width: 768px) {
+                text-align: left;
+            }
+        }
+
+        .freeship-price {
+            color: red;
+            font-weight: 600;
+        }
+
+        .freeship-bold {
+            font-weight: 600;
+        }
+    }
+
+    .freeship-progress-bar-wrapper {
+        color: #000;
+
+        span {
+            display: inline-block;
+
+            &.min {
+                width: 17px;
+            }
+
+            &.max {
+                width: 33px;
+                text-align: right;
+            }
+        }
+
+        .freeship-progress-bar-bg {
+            background-color: rgba(0, 0, 0, .1);
+            height: 8px;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .freeship-progress-bar-fill {
+            height: 8px;
+            display: block;
+            border-radius: 3px;
+            animation-name: shippingProgressBar;
+            animation-duration: 1.25s;
+            animation-timing-function: ease;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: none;
+            animation-play-state: running;
+            -webkit-animation: shippingProgressBar 1.25s 1;
+            animation: shippingProgressBar 1.25s 1;
+            transition: width .667s cubic-bezier(.37, .16, .22, .89);
+        }
+
+        .freeship-progress-bar-progress {
+            background: #00b052;
+        }
+
+        .freeship-progress-bar {
+            margin: 0 auto;
+            width: ~'calc(100% - 58px)';
+            display: inline-block;
+        }
+
+        .separator {
+            width: 25%;
+            height: 8px;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            z-index: 999;
+
+            &.line {
+                border-right: 3px solid #fafafa;
+            }
+        }
+    }
+
+    @-webkit-keyframes shippingProgressBar {
+        0% {
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%)
+        }
+
+        to {
+            -webkit-transform: translateX(0);
+            transform: translateX(0)
+        }
+    }
+    @keyframes shippingProgressBar {
+        0% {
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%)
+        }
+
+        to {
+            -webkit-transform: translateX(0);
+            transform: translateX(0)
+        }
+    }
+}

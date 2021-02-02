@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="checkout">
+            <group id="cart">
+                <field id="freeshipping_progress_enable" sortOrder="110" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Enable Free Shipping Progress Bar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display a free shipping progress bar in cart to promote higher order values.</comment>
+                </field>
+                <field id="use_freeshipping_method_config" sortOrder="120" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Use Free Shipping Method Configuration</label>
+                    <comment>If set to yes, the free shipping progress bar will be based on if the core free shipping method is available or not. If set to no, you can use a custom configuration using the fields that will appear below this field.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="freeshipping_countdown_enable">1</field>
+                    </depends>
+                </field>
+                <field id="freeshipping_progress_min_total" sortOrder="140" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+                    <label>Free Shipping Progress Bar Minimum Order Total</label>
+                    <comment>Enter the value an order has to be equal to or over to be eligible for free shipping.</comment>
+                    <depends>
+                        <field id="use_freeshipping_method_config">0</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

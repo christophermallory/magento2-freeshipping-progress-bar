@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="ChrisMallory_FreeShippingProgressBar::css/custom.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <referenceContainer name="cart.summary">
+            <block name="checkout.cart.freeshipping.progress.bar" before="checkout.cart.shipping" template="ChrisMallory_FreeShippingProgressBar::cart/freeshipping_progress_bar.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">ChrisMallory\FreeShippingProgressBar\ViewModel\Cart\ProgressBar</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
