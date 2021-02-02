@@ -12,11 +12,12 @@ $viewModel = $block->getData('viewModel');
     <div class="freeship-progress">
         <?php if (!$viewModel->isFreeShippingEligible()): ?>
             <?php
-                $freeshippingProgress = $viewModel->getFreeShippingCompletionPercent();
-                $background = "background: linear-gradient(to right, #00b052 0%, #00b052 " . $freeshippingProgress . "%, lightgreen);";
-                if ($freeshippingProgress > 90) {
-                    $background = "background: linear-gradient(to right, #00b052 0%, #00b052 95%, lightgreen);";
-                }
+            $freeshippingProgress = $viewModel->getFreeShippingCompletionPercent();
+            $background = "background: linear-gradient(to right, #00b052 0%, #00b052 "
+                . $freeshippingProgress . "%, lightgreen);";
+            if ($freeshippingProgress > 90) {
+                $background = "background: linear-gradient(to right, #00b052 0%, #00b052 95%, lightgreen);";
+            }
             ?>
             <p class="upsell">Add
                 <span class="freeship-price">
@@ -30,7 +31,8 @@ $viewModel = $block->getData('viewModel');
                 <div class="freeship-progress-bar">
                     <div class="freeship-progress-bar-bg">
                         <div class="freeship-progress-bar-fill freeship-progress-bar-progress"
-                             style="width: <?= /* @noEscape */ $viewModel->getFreeShippingCompletionPercent() ?>%; <?= $background ?>">
+                             style="width: <?= /* @noEscape */ $viewModel->getFreeShippingCompletionPercent() ?>%;
+                             <?= /* @noEscape */ $background ?>">
                         </div>
                     </div>
                 </div>
