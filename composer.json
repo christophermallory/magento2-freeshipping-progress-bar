@@ -10,7 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "magento/module-quote": "*",
+        "magento/module-checkout": "*"
+    },
     "autoload": {
         "files": [
             "registration.php"

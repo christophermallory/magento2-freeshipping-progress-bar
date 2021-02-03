@@ -1,10 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Chris Mallory All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="ChrisMallory_FreeShippingProgressBar::css/custom.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <referenceContainer name="cart.summary">
-            <block name="checkout.cart.freeshipping.progress.bar" before="checkout.cart.shipping" template="ChrisMallory_FreeShippingProgressBar::cart/freeshipping_progress_bar.phtml">
+            <block name="checkout.cart.freeshipping.progress.bar"
+                   before="checkout.cart.shipping"
+                   template="ChrisMallory_FreeShippingProgressBar::cart/freeshipping_progress_bar.phtml"
+                   ifconfig="checkout/cart/freeshipping_progress_enable">
                 <arguments>
                     <argument name="viewModel" xsi:type="object">ChrisMallory\FreeShippingProgressBar\ViewModel\Cart\ProgressBar</argument>
                 </arguments>
