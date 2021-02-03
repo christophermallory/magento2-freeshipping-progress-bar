@@ -9,7 +9,6 @@ namespace ChrisMallory\FreeShippingProgressBar\ViewModel\Cart;
 
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -17,7 +16,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Quote;
 
-class ProgressBar extends DataObject implements ArgumentInterface
+class ProgressBar implements ArgumentInterface
 {
     /**
      * System XML config path for ChrisMallory_FreeShippingBanner - Uses default checkout cart section
@@ -65,29 +64,6 @@ class ProgressBar extends DataObject implements ArgumentInterface
     }
 
     /**
-     * Check if free shipping countdown is enabled
-     *
-     * @return bool
-     */
-    public function isEnabled(): bool
-    {
-        return (bool)$this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
-            . 'freeshipping_progress_enable');
-    }
-
-    /**
-     * Get Cart/Quote
-     *
-     * @return CartInterface|Quote
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
-    public function getQuote()
-    {
-        return $this->session->getQuote();
-    }
-
-    /**
      * Get minimum order total required to be eligible for free shipping
      *
      * @return float
@@ -121,9 +97,7 @@ class ProgressBar extends DataObject implements ArgumentInterface
      */
     public function getCurrentTotal(): float
     {
-        $quote = $this->session->getQuote();
-
-        return (float)$quote->getSubtotalWithDiscount();
+        return (float)$this->session->getQuote()->getSubtotalWithDiscount();
     }
 
     /**
@@ -156,9 +130,7 @@ class ProgressBar extends DataObject implements ArgumentInterface
      */
     public function getFreeShippingDifference(): float
     {
-        $currentTotal = $this->getCurrentTotal();
-
-        return $this->getFreeShippingMinValue() - $currentTotal;
+        return $this->getFreeShippingMinValue() - $this->getCurrentTotal();
     }
 
     /**

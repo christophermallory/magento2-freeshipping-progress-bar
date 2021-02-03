@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © Chris Mallory All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
 
 use ChrisMallory\FreeShippingProgressBar\ViewModel\Cart\ProgressBar;
 use Magento\Framework\View\Element\Template;
@@ -8,42 +13,36 @@ use Magento\Framework\View\Element\Template;
 $viewModel = $block->getData('viewModel');
 
 ?>
-<?php if ($viewModel->isEnabled()): ?>
-    <div class="freeship-progress">
-        <?php if (!$viewModel->isFreeShippingEligible()): ?>
-            <?php
-            $freeshippingProgress = $viewModel->getFreeShippingCompletionPercent();
-            $background = "background: linear-gradient(to right, #00b052 0%, #00b052 "
-                . $freeshippingProgress . "%, lightgreen);";
-            if ($freeshippingProgress > 90) {
-                $background = "background: linear-gradient(to right, #00b052 0%, #00b052 95%, lightgreen);";
-            }
-            ?>
-            <p class="upsell">Add
-                <span class="freeship-price">
-                    <?= /* @noEscape */ $viewModel->getFormattedPrice($viewModel->getFreeShippingDifference()) ?>
-                </span>
-                more to get
-                <span class="freeship-bold">FREE SHIPPING!</span>
-            </p>
-            <div class="freeship-progress-bar-wrapper">
-                <span class="min"><?= /* @noEscape */ $viewModel->getFormattedPrice(0, 0) ?></span>
-                <div class="freeship-progress-bar">
-                    <div class="freeship-progress-bar-bg">
-                        <div class="freeship-progress-bar-fill freeship-progress-bar-progress"
-                             style="width: <?= /* @noEscape */ $viewModel->getFreeShippingCompletionPercent() ?>%;
-                             <?= /* @noEscape */ $background ?>">
-                        </div>
+<div class="freeship-progress">
+    <?php if (!$viewModel->isFreeShippingEligible()): ?>
+        <?php
+        $freeshippingProgress = $viewModel->getFreeShippingCompletionPercent();
+        $background = "background: linear-gradient(to right, #00b052 0%, #00b052 "
+            . $freeshippingProgress . "%, lightgreen);";
+        if ($freeshippingProgress > 90) {
+            $background = "background: linear-gradient(to right, #00b052 0%, #00b052 95%, lightgreen);";
+        }
+        ?>
+        <p class="upsell">
+            <?= __('Add <span class="freeship-price">%1</span> more to get <span class="freeship-bold">FREE SHIPPING!</span>', $viewModel->getFormattedPrice($viewModel->getFreeShippingDifference())) ?>
+        </p>
+        <div class="freeship-progress-bar-wrapper">
+            <span class="min"><?= /* @noEscape */ $viewModel->getFormattedPrice(0, 0) ?></span>
+            <div class="freeship-progress-bar">
+                <div class="freeship-progress-bar-bg">
+                    <div class="freeship-progress-bar-fill freeship-progress-bar-progress"
+                         style="width: <?= /* @noEscape */ $viewModel->getFreeShippingCompletionPercent() ?>%;
+                         <?= /* @noEscape */ $background ?>">
                     </div>
                 </div>
-                <span class="max">
-                    <?= /* @noEscape */ $viewModel->getFormattedPrice($viewModel->getFreeShippingMinValue(), 0) ?>
-                </span>
             </div>
-        <?php else: ?>
-            <div class="freeship-text">
-                <p>Your Order Is Eligible for <span class="freeship-bold">FREE SHIPPING!</span></p>
-            </div>
-        <?php endif; ?>
-    </div>
-<?php endif ?>
+            <span class="max">
+                <?= /* @noEscape */ $viewModel->getFormattedPrice($viewModel->getFreeShippingMinValue(), 0) ?>
+            </span>
+        </div>
+    <?php else: ?>
+        <div class="freeship-text">
+            <p><?= __('Your Order Is Eligible for <span class="freeship-bold">FREE SHIPPING!</span>') ?></p>
+        </div>
+    <?php endif; ?>
+</div>
