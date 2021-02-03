@@ -12,6 +12,8 @@ use Magento\Framework\View\Element\Template;
 /** @var ProgressBar $viewModel */
 $viewModel = $block->getData('viewModel');
 
+$shippingLabel = 'FREE SHIPPING';
+
 ?>
 <div class="freeship-progress">
     <?php if (!$viewModel->isFreeShippingEligible()): ?>
@@ -24,7 +26,11 @@ $viewModel = $block->getData('viewModel');
         }
         ?>
         <p class="upsell">
-            <?= __('Add <span class="freeship-price">%1</span> more to get <span class="freeship-bold">FREE SHIPPING!</span>', $viewModel->getFormattedPrice($viewModel->getFreeShippingDifference())) ?>
+        <?= /* @noEscape */ __(
+            'Add <span class="freeship-price">%1</span> more to get <span class="freeship-bold">%2!</span>',
+            $viewModel->getFormattedPrice($viewModel->getFreeShippingDifference()),
+            $shippingLabel
+        ) ?>
         </p>
         <div class="freeship-progress-bar-wrapper">
             <span class="min"><?= /* @noEscape */ $viewModel->getFormattedPrice(0, 0) ?></span>
@@ -42,7 +48,12 @@ $viewModel = $block->getData('viewModel');
         </div>
     <?php else: ?>
         <div class="freeship-text">
-            <p><?= __('Your Order Is Eligible for <span class="freeship-bold">FREE SHIPPING!</span>') ?></p>
+            <p>
+                <?= /* @noEscape */ __(
+                    'Your order is eligible for <span class="freeship-bold">%1!</span>',
+                    $shippingLabel
+                ) ?>
+            </p>
         </div>
     <?php endif; ?>
 </div>

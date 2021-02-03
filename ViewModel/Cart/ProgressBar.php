@@ -49,18 +49,15 @@ class ProgressBar implements ArgumentInterface
      * @param ScopeConfigInterface      $scopeConfig
      * @param Session                   $session
      * @param PriceCurrencyInterface    $priceCurrency
-     * @param array                     $data
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         Session $session,
-        PriceCurrencyInterface $priceCurrency,
-        array $data = []
+        PriceCurrencyInterface $priceCurrency
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->session = $session;
         $this->priceCurrency = $priceCurrency;
-        parent::__construct($data);
     }
 
     /**
