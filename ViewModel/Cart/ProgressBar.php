@@ -12,9 +12,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Quote\Api\Data\CartInterface;
-use Magento\Quote\Model\Quote;
 
 class ProgressBar implements ArgumentInterface
 {
@@ -68,21 +67,21 @@ class ProgressBar implements ArgumentInterface
     public function getFreeShippingMinValue(): float
     {
         if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
-                . 'use_freeshipping_method_config')
+                . 'use_freeshipping_method_config', ScopeInterface::SCOPE_STORE)
             && $this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH
-                . 'active')
+                . 'active', ScopeInterface::SCOPE_STORE)
         ) {
             return $this->getFreeShippingMethodMinValue();
         }
 
         return (float)$this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
-            . 'freeshipping_progress_min_total');
+            . 'freeshipping_progress_min_total', ScopeInterface::SCOPE_STORE);
     }
 
     public function getFreeShippingMethodMinValue(): float
     {
         return (float)$this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH
-            . 'free_shipping_subtotal');
+            . 'free_shipping_subtotal', ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -108,8 +107,8 @@ class ProgressBar implements ArgumentInterface
     {
         $currentTotal = $this->getCurrentTotal();
         if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
-            . 'use_freeshipping_method_config')) {
-            if ($this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active')) {
+            . 'use_freeshipping_method_config', ScopeInterface::SCOPE_STORE)) {
+            if ($this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active', ScopeInterface::SCOPE_STORE)) {
                 return ($currentTotal >= $this->getFreeShippingMethodMinValue());
             }
             return false;
