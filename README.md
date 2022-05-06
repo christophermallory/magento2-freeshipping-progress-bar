@@ -47,7 +47,7 @@ If set to yes, this module will use the configuration for the core Free Shipping
 When the above setting is set to no, this field is where you set the order value that the Free Shipping Progress Bar counts down to.
 
 ## Compatibility
-This module has been tested and validated to work on Magento versions 2.3 to 2.4.2.
+This module has been tested and validated to work on Magento versions 2.3 to 2.4.3-p2.
 
 This module uses a ViewModel and should be compatible with versions 2.2 and higher but has not been tested on versions lower than 2.3.
 
