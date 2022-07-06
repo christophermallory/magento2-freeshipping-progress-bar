@@ -105,19 +105,23 @@ class ProgressBar implements ArgumentInterface
      */
     public function isFreeShippingEligible(): bool
     {
-        $currentTotal = $this->getCurrentTotal();
         if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
-            . 'use_freeshipping_method_config', ScopeInterface::SCOPE_STORE)) {
-            if ($this->scopeConfig->getValue(
-                self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active',
-                ScopeInterface::SCOPE_STORE
-            )) {
-                return ($currentTotal >= $this->getFreeShippingMethodMinValue());
+            . 'freeshipping_progress_enable', ScopeInterface::SCOPE_STORE)) {
+            $currentTotal = $this->getCurrentTotal();
+            if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH
+                . 'use_freeshipping_method_config', ScopeInterface::SCOPE_STORE)) {
+                if ($this->scopeConfig->getValue(
+                    self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active',
+                    ScopeInterface::SCOPE_STORE
+                )) {
+                    return ($currentTotal >= $this->getFreeShippingMethodMinValue());
+                }
+                return false;
             }
-            return false;
+            return ($currentTotal >= $this->getFreeShippingMinValue());
         }
-
-        return ($currentTotal >= $this->getFreeShippingMinValue());
+        return false;
+            
     }
 
     /**
