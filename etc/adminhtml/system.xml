@@ -16,7 +16,7 @@
                 </field>
                 <field id="use_freeshipping_method_config" sortOrder="120" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
                     <label>Use Free Shipping Method Configuration</label>
-                    <comment>If set to yes, the free shipping progress bar will be based on if the core free shipping method is available or not. If set to no, you can use a custom configuration using the fields that will appear below this field.</comment>
+                    <comment>If set to yes, the free shipping progress bar will be displayed if the core free shipping method is available or not. If set to no, you can use a custom configuration using the fields that will appear below this field.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="freeshipping_countdown_enable">1</field>
