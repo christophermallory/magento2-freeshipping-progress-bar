@@ -71,6 +71,7 @@ class ProgressBar implements ArgumentInterface
             && $this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH
                 . 'active', ScopeInterface::SCOPE_STORE)
         ) {
+            
             return $this->getFreeShippingMethodMinValue();
         }
 
@@ -114,14 +115,17 @@ class ProgressBar implements ArgumentInterface
                     self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active',
                     ScopeInterface::SCOPE_STORE
                 )) {
+                    
                     return ($currentTotal >= $this->getFreeShippingMethodMinValue());
                 }
+                
                 return false;
             }
+            
             return ($currentTotal >= $this->getFreeShippingMinValue());
         }
-        return false;
-            
+        
+        return false;      
     }
 
     /**
