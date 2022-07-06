@@ -125,7 +125,7 @@ class ProgressBar implements ArgumentInterface
             return ($currentTotal >= $this->getFreeShippingMinValue());
         }
         
-        return false;      
+        return false;
     }
 
     /**
