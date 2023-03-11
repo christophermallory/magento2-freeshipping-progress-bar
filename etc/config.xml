@@ -11,6 +11,8 @@
             <cart>
                 <freeshipping_progress_enable>0</freeshipping_progress_enable>
                 <use_freeshipping_method_config>1</use_freeshipping_method_config>
+                <freeshipping_progress_use_subtotal>1</freeshipping_progress_use_subtotal>
+                <freeshipping_progress_subtotal_includes_discount>1</freeshipping_progress_subtotal_includes_discount>
             </cart>
         </checkout>
     </default>

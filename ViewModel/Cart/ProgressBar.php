@@ -30,17 +30,17 @@ class ProgressBar implements ArgumentInterface
     /**
      * @var ScopeConfigInterface $scopeConfig
      */
-    protected $scopeConfig;
+    protected ScopeConfigInterface $scopeConfig;
 
     /**
      * @var Session $session
      */
-    protected $session;
+    protected Session $session;
 
     /**
      * @var PriceCurrencyInterface $priceCurrency
      */
-    protected $priceCurrency;
+    protected PriceCurrencyInterface $priceCurrency;
 
     /**
      * Countdown constructor.
@@ -71,7 +71,7 @@ class ProgressBar implements ArgumentInterface
             && $this->scopeConfig->getValue(self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH
                 . 'active', ScopeInterface::SCOPE_STORE)
         ) {
-            
+
             return $this->getFreeShippingMethodMinValue();
         }
 
@@ -94,7 +94,15 @@ class ProgressBar implements ArgumentInterface
      */
     public function getCurrentTotal(): float
     {
-        return (float)$this->session->getQuote()->getSubtotalWithDiscount();
+        $quote = $this->session->getQuote();
+        if (!$this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_use_subtotal', ScopeInterface::SCOPE_STORE)) {
+            return $quote->getGrandTotal();
+        }
+        if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_subtotal_includes_discount', ScopeInterface::SCOPE_STORE)) {
+            return $quote->getSubtotalWithDiscount();
+        }
+        return $quote->getSubtotal();
+
     }
 
     /**
@@ -115,16 +123,16 @@ class ProgressBar implements ArgumentInterface
                     self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active',
                     ScopeInterface::SCOPE_STORE
                 )) {
-                    
+
                     return ($currentTotal >= $this->getFreeShippingMethodMinValue());
                 }
-                
+
                 return false;
             }
-            
+
             return ($currentTotal >= $this->getFreeShippingMinValue());
         }
-        
+
         return false;
     }
 

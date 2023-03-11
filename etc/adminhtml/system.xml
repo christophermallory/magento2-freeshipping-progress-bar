@@ -26,7 +26,26 @@
                     <label>Free Shipping Progress Bar Minimum Order Total</label>
                     <comment>Enter the value an order has to be equal to or over to be eligible for free shipping.</comment>
                     <depends>
+                        <field id="freeshipping_countdown_enable">1</field>
                         <field id="use_freeshipping_method_config">0</field>
+                    </depends>
+                </field>
+                <field id="freeshipping_progress_use_subtotal" sortOrder="160" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Minimum Order Total Based On Subtotal</label>
+                    <comment>If set to no, grand total will be used</comment>
+                    <depends>
+                        <field id="freeshipping_countdown_enable">1</field>
+                        <field id="use_freeshipping_method_config">0</field>
+                    </depends>
+                </field>
+                <field id="freeshipping_progress_subtotal_includes_discount" sortOrder="160" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Subtotal Including Discounts</label>
+                    <comment>If set to yes, the minimum order total must be greater than the subtotal minus any discounts</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="freeshipping_countdown_enable">1</field>
+                        <field id="use_freeshipping_method_config">0</field>
+                        <field id="freeshipping_progress_use_subtotal">1</field>
                     </depends>
                 </field>
             </group>
