@@ -30,17 +30,17 @@ class ProgressBar implements ArgumentInterface
     /**
      * @var ScopeConfigInterface $scopeConfig
      */
-    protected ScopeConfigInterface $scopeConfig;
+    protected $scopeConfig;
 
     /**
      * @var Session $session
      */
-    protected Session $session;
+    protected $session;
 
     /**
      * @var PriceCurrencyInterface $priceCurrency
      */
-    protected PriceCurrencyInterface $priceCurrency;
+    protected $priceCurrency;
 
     /**
      * Countdown constructor.
@@ -95,14 +95,22 @@ class ProgressBar implements ArgumentInterface
     public function getCurrentTotal(): float
     {
         $quote = $this->session->getQuote();
-        if (!$this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_use_subtotal', ScopeInterface::SCOPE_STORE)) {
+        if (!$this->scopeConfig->getValue(
+            self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_use_subtotal',
+            ScopeInterface::SCOPE_STORE
+        )) {
+
             return $quote->getGrandTotal();
         }
-        if ($this->scopeConfig->getValue(self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_subtotal_includes_discount', ScopeInterface::SCOPE_STORE)) {
+        if ($this->scopeConfig->getValue(
+            self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_subtotal_includes_discount',
+            ScopeInterface::SCOPE_STORE
+        )) {
+
             return $quote->getSubtotalWithDiscount();
         }
-        return $quote->getSubtotal();
 
+        return $quote->getSubtotal();
     }
 
     /**
@@ -123,7 +131,6 @@ class ProgressBar implements ArgumentInterface
                     self::CARRIERS_FREE_SHIPPING_XML_CONFIG_PATH . 'active',
                     ScopeInterface::SCOPE_STORE
                 )) {
-
                     return ($currentTotal >= $this->getFreeShippingMethodMinValue());
                 }
 
