@@ -33,12 +33,13 @@
                 <field id="freeshipping_progress_use_subtotal" sortOrder="160" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
                     <label>Minimum Order Total Based On Subtotal</label>
                     <comment>If set to no, grand total will be used</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="freeshipping_countdown_enable">1</field>
                         <field id="use_freeshipping_method_config">0</field>
                     </depends>
                 </field>
-                <field id="freeshipping_progress_subtotal_includes_discount" sortOrder="160" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                <field id="freeshipping_progress_subtotal_includes_discount" sortOrder="180" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
                     <label>Subtotal Including Discounts</label>
                     <comment>If set to yes, the minimum order total must be greater than the subtotal minus any discounts</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
