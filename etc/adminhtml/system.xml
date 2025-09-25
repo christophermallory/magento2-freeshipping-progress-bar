@@ -49,6 +49,16 @@
                         <field id="freeshipping_progress_use_subtotal">1</field>
                     </depends>
                 </field>
+                <field id="freeshipping_progress_subtotal_includes_tax" sortOrder="190" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Subtotal Including Tax</label>
+                    <comment>If set to yes, tax will be included in the subtotal calculation for determining free shipping eligibility</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="freeshipping_countdown_enable">1</field>
+                        <field id="use_freeshipping_method_config">0</field>
+                        <field id="freeshipping_progress_use_subtotal">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

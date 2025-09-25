@@ -102,15 +102,26 @@ class ProgressBar implements ArgumentInterface
 
             return $quote->getGrandTotal();
         }
+
+        $subtotal = 0;
         if ($this->scopeConfig->getValue(
             self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_subtotal_includes_discount',
             ScopeInterface::SCOPE_STORE
         )) {
-
-            return $quote->getSubtotalWithDiscount();
+            $subtotal = $quote->getSubtotalWithDiscount();
+        } else {
+            $subtotal = $quote->getSubtotal();
         }
 
-        return $quote->getSubtotal();
+        // Include tax in subtotal if configured
+        if ($this->scopeConfig->getValue(
+            self::CHECKOUT_CART_XML_CONFIG_PATH . 'freeshipping_progress_subtotal_includes_tax',
+            ScopeInterface::SCOPE_STORE
+        )) {
+            $subtotal += $quote->getShippingAddress()->getTaxAmount();
+        }
+
+        return $subtotal;
     }
 
     /**
