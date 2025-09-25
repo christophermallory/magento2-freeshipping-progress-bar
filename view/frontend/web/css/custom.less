@@ -37,21 +37,39 @@
 
     .freeship-progress-bar-wrapper {
         color: #000;
+        display: flex;
+        align-items: center;
+        gap: 8px;
 
         span {
-            display: inline-block;
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            white-space: nowrap;
 
             &.min {
-                width: fit-content;
-                max-width: 40px;
-                padding-right: 3px;
+                width: auto;
+                min-width: 45px;
+                max-width: 65px;
+                text-align: left;
+
+                @media screen and (max-width: 480px) {
+                    min-width: 35px;
+                    max-width: 50px;
+                    font-size: 0.75rem;
+                }
             }
 
             &.max {
-                width: fit-content;
-                max-width: 40px;
-                padding-left: 3px;
+                width: auto;
+                min-width: 45px;
+                max-width: 65px;
                 text-align: right;
+
+                @media screen and (max-width: 480px) {
+                    min-width: 35px;
+                    max-width: 50px;
+                    font-size: 0.75rem;
+                }
             }
         }
 
@@ -68,16 +86,7 @@
             height: 8px;
             display: block;
             border-radius: 3px;
-            animation-name: shippingProgressBar;
-            animation-duration: 1.25s;
-            animation-timing-function: ease;
-            animation-delay: 0s;
-            animation-iteration-count: 1;
-            animation-direction: normal;
-            animation-fill-mode: none;
-            animation-play-state: running;
-            -webkit-animation: shippingProgressBar 1.25s 1;
-            animation: shippingProgressBar 1.25s 1;
+            animation: shippingProgressBar 1.25s ease;
             transition: width .667s cubic-bezier(.37, .16, .22, .89);
         }
 
@@ -86,32 +95,18 @@
         }
 
         .freeship-progress-bar {
-            margin: 0 auto;
-            width: ~'calc(100% - 58px)';
-            display: inline-block;
+            flex: 1;
+            min-width: 0;
         }
     }
 
-    @-webkit-keyframes shippingProgressBar {
-        0% {
-            -webkit-transform: translateX(-100%);
-            transform: translateX(-100%)
-        }
-
-        to {
-            -webkit-transform: translateX(0);
-            transform: translateX(0)
-        }
-    }
     @keyframes shippingProgressBar {
         0% {
-            -webkit-transform: translateX(-100%);
-            transform: translateX(-100%)
+            transform: translateX(-100%);
         }
 
-        to {
-            -webkit-transform: translateX(0);
-            transform: translateX(0)
+        100% {
+            transform: translateX(0);
         }
     }
 }
