@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Chris Mallory All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="minicart">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="minicart_content" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="freeship_progress" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">ChrisMallory_FreeShippingProgressBar/minicart/freeshipping-progress</item>
+                                    </item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="freeship_progress_bar" xsi:type="array">
+                                            <item name="component" xsi:type="string">ChrisMallory_FreeShippingProgressBar/js/view/minicart/freeshipping-progress</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">ChrisMallory_FreeShippingProgressBar/minicart/freeshipping-progress</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

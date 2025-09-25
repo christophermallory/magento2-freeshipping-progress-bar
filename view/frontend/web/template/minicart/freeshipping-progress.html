@@ -1,0 +1,27 @@
+<!-- ko if: isEnabled() -->
+<div class="freeship-progress" data-bind="blockLoader: isLoading">
+    <!-- ko ifnot: isFreeShippingEligible() -->
+    <p class="upsell" data-bind="html: getUpsellMessage()"></p>
+    <div class="freeship-progress-bar-wrapper">
+        <span class="min" data-bind="text: getFormattedPrice(0, 0)"></span>
+        <div class="freeship-progress-bar">
+            <div class="freeship-progress-bar-bg">
+                <div class="freeship-progress-bar-fill freeship-progress-bar-progress"
+                     data-bind="style: {
+                         width: getFreeShippingCompletionPercent() + '%',
+                         background: getProgressBackground()
+                     }">
+                </div>
+            </div>
+        </div>
+        <span class="max" data-bind="text: getFormattedPrice(getFreeShippingMinValue(), 0)"></span>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: isFreeShippingEligible() -->
+    <div class="freeship-text">
+        <p data-bind="html: getEligibleMessage()"></p>
+    </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

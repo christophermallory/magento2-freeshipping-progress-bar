@@ -111,3 +111,104 @@
         }
     }
 }
+
+// Mini-cart specific styles
+.minicart-wrapper {
+    .freeship-progress {
+        padding: 12px 15px;
+        margin: 0;
+        border-top: 1px solid #e3e3e3;
+        border-bottom: none;
+        background-color: #f8f8f8;
+
+        .freeship-text {
+            font-size: 13px;
+            line-height: 1.4;
+
+            p {
+                margin-bottom: 5px;
+            }
+        }
+
+        p {
+            &.upsell {
+                text-align: center;
+                font-size: 12px;
+                margin-bottom: 8px;
+
+                @media screen and (min-width: 768px) {
+                    text-align: center;
+                }
+            }
+        }
+
+        .freeship-progress-bar-wrapper {
+            margin-top: 5px;
+
+            span {
+                font-size: 11px;
+
+                &.min {
+                    width: 15px;
+                }
+
+                &.max {
+                    width: 30px;
+                }
+            }
+
+            .freeship-progress-bar {
+                width: ~'calc(100% - 50px)';
+            }
+
+            .freeship-progress-bar-bg {
+                height: 6px;
+            }
+
+            .freeship-progress-bar-fill {
+                height: 6px;
+            }
+        }
+    }
+}
+
+// Mobile adjustments for mini-cart
+@media screen and (max-width: 767px) {
+    .minicart-wrapper {
+        .freeship-progress {
+            padding: 10px 12px;
+
+            .freeship-text p {
+                font-size: 12px;
+            }
+
+            p.upsell {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            .freeship-progress-bar-wrapper {
+                span {
+                    font-size: 10px;
+
+                    &.min {
+                        width: 12px;
+                    }
+
+                    &.max {
+                        width: 25px;
+                    }
+                }
+
+                .freeship-progress-bar {
+                    width: ~'calc(100% - 42px)';
+                }
+
+                .freeship-progress-bar-bg,
+                .freeship-progress-bar-fill {
+                    height: 5px;
+                }
+            }
+        }
+    }
+}
