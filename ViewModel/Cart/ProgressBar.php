@@ -100,7 +100,7 @@ class ProgressBar implements ArgumentInterface
             ScopeInterface::SCOPE_STORE
         )) {
 
-            return $quote->getGrandTotal();
+            return (float)$quote->getGrandTotal();
         }
 
         $subtotal = 0;
@@ -121,7 +121,7 @@ class ProgressBar implements ArgumentInterface
             $subtotal += $quote->getShippingAddress()->getTaxAmount();
         }
 
-        return $subtotal;
+        return (float)$subtotal;
     }
 
     /**
