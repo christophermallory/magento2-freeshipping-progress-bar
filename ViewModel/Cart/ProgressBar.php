@@ -175,7 +175,24 @@ class ProgressBar implements ArgumentInterface
      */
     public function getFreeShippingCompletionPercent(): float
     {
-        return ($this->getCurrentTotal() / $this->getFreeShippingMinValue()) * 100;
+        $minValue = $this->getFreeShippingMinValue();
+        if ($minValue <= 0) {
+            return 0.0;
+        }
+
+        return ($this->getCurrentTotal() / $minValue) * 100;
+    }
+
+    /**
+     * Check if the progress bar has a free shipping minimum to display progress towards
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isProgressBarVisible(): bool
+    {
+        return $this->isFreeShippingEligible() || $this->getFreeShippingMinValue() > 0;
     }
 
     /**

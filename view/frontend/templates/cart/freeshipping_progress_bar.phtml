@@ -14,6 +14,10 @@ $viewModel = $block->getData('viewModel');
 
 $shippingLabel = 'FREE SHIPPING';
 
+if (!$viewModel->isProgressBarVisible()) {
+    return;
+}
+
 ?>
 <div class="freeship-progress">
     <?php if (!$viewModel->isFreeShippingEligible()): ?>
