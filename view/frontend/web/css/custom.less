@@ -36,19 +36,13 @@
     }
 
     .freeship-progress-bar-wrapper {
+        align-items: center;
         color: #000;
+        display: flex;
 
         span {
-            display: inline-block;
-
-            &.min {
-                width: 17px;
-            }
-
-            &.max {
-                width: 33px;
-                text-align: right;
-            }
+            flex: 0 0 auto;
+            white-space: nowrap;
         }
 
         .freeship-progress-bar-bg {
@@ -82,9 +76,9 @@
         }
 
         .freeship-progress-bar {
-            margin: 0 auto;
-            width: ~'calc(100% - 58px)';
-            display: inline-block;
+            flex: 1 1 auto;
+            margin: 0 5px;
+            min-width: 0;
         }
     }
 
